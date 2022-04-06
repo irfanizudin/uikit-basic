@@ -57,6 +57,16 @@ class TaskTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detail") as! DetailTaskViewController
+        
+        vc.getTitle = item.title
+        vc.getSubtitle = item.subtitle
+        vc.getImage = item.image
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
